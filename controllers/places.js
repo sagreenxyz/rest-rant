@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
                     message += `${field} was ${err.errors[field].value}. `
                     message += `${err.errors[field].message}`
                 }
-                res.render('places/new', { message })
+                res.render('places/new', { message, body: req.body })
             }
             else {
                 res.render('error404')
