@@ -42,7 +42,7 @@ function New_Form(data) {
                             <input className="form-control" id="cuisines" name="cuisines" required />
                         </div>
                         <div className="form-group col-sm-6 col-md-4 col-lg-3">
-                            <label for="founded">Founded Year</label>
+                            <label htmlFor="founded">Founded Year</label>
                             <input type="number" className="form-control" id="founded" name="founded" value={new Date().getFullYear()} />
                         </div>
                     </div>

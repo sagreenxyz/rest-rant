@@ -20,9 +20,10 @@ router.post('/', (req, res) => {
         .catch(err => {
             if (err && err.name == 'ValidationError') {
                 let message = 'Validation Error: '
-
-                // Todo: Find all validation errors
-
+                for (var field in err.errors) {
+                    message += `${field} was ${err.errors[field].value}. `
+                    message += `${err.errors[field].message}`
+                }
                 res.render('places/new', { message })
             }
             else {
