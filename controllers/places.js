@@ -18,7 +18,7 @@ router.get('/:id/edit', (req, res) => {
         res.render('error404')
     }
     else {
-        res.render('places/edit', { place: places[id] })
+        res.render('places/edit', { place: places[id], id })
     }
 })
 
@@ -61,6 +61,11 @@ router.delete('/:id', (req, res) => {
         places.splice(id, 1)
         res.redirect('/places')
     }
+})
+
+router.put('/:id', (req, res) => {
+    console.log(req.body)
+    console.log(req.params.id)
 })
 
 module.exports = router
