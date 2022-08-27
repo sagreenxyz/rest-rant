@@ -7,6 +7,20 @@ function Show({ place, id }) {
             No comments yet!
         </h3>
     )
+    if (place.comments.length) {
+        comments = place.comments.map(c => {
+            return (
+                <div className="border">
+                    <h2 className="rant">{c.rant ? 'Rant! 😡' : 'Rave! 😻'}</h2>
+                    <h4>{c.content}</h4>
+                    <h3>
+                        <stong>- {c.author}</stong>
+                    </h3>
+                    <h4>Rating: {c.stars}</h4>
+                </div>
+            )
+        })
+    }
     return (
         <Def>
             <main>
@@ -16,7 +30,7 @@ function Show({ place, id }) {
                 <p>Not Rated</p>
                 <h3>Description</h3>
                 <h4>
-                   {place.showEstablished()}
+                    {place.showEstablished()}
                 </h4>
                 <h4>
                     Serving {place.cuisines}
