@@ -20,7 +20,8 @@ router.post('/', (req, res) => {
     if (!req.body.state) {
         req.body.state = 'USA'
     }
-    res.status(200).send('POST /places')
+    places.push(req.body)
+    res.redirect('/places')
 })
 
 module.exports = router
