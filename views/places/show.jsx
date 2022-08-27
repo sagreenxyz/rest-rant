@@ -2,6 +2,11 @@ const React = require('react')
 const Def = require('../default')
 
 function Show({ place, id }) {
+    let comments = (
+        <h3 className="inactive">
+            No comments yet!
+        </h3>
+    )
     return (
         <Def>
             <main>
@@ -17,7 +22,7 @@ function Show({ place, id }) {
                     Serving {place.cuisines}
                 </h4>
                 <h3>Comments</h3>
-                <p>No comments yet!</p>
+                {comments}
                 <a href={`/places/${id}/edit`} className="btn btn-warning">
                     Edit
                 </a>
