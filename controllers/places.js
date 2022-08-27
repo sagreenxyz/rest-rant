@@ -9,6 +9,10 @@ router.get('/new', (req, res) => {
     res.status(200).render('places/new')
 })
 
+router.get('/:id/edit', (req, res) => {
+    res.status(200).render('places/edit')
+})
+
 router.get('/:id', (req, res) => {
     let id = Number(req.params.id)
     if (isNaN(id)) {
