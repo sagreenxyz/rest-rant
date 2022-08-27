@@ -8,6 +8,11 @@ function Show({ place, id }) {
             No comments yet!
         </h3>
     )
+    let rating = (
+        <h3 className="inactive">
+            Not yet rated.
+        </h3>
+    )
     if (place.comments.length) {
         comments = place.comments.map(c => {
             return (
@@ -28,7 +33,7 @@ function Show({ place, id }) {
                 <h1>{place.name}</h1>
                 <img src={place.pic} alt={place.name} width="300px" />
                 <h3>Rating</h3>
-                <p>Not Rated</p>
+                {rating}
                 <h3>Description</h3>
                 <h4>
                     {place.showEstablished()}
