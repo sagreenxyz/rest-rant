@@ -2,7 +2,6 @@ const React = require('react')
 const Def = require('../default')
 
 function Show({ place, id }) {
-    console.log(id)
     let comments = (
         <h3 className="inactive">
             No comments yet!
@@ -14,6 +13,15 @@ function Show({ place, id }) {
         </h3>
     )
     if (place.comments.length) {
+        let sumRatings = place.comments.reduce((tot, c) => {
+            return tot + c.rating
+        }, 0)
+        let averageRating = sumRatings / place.comments.length
+        rating = (
+            <h3>
+                {Math.round(averageRating)} stars
+            </h3>
+        )
         comments = place.comments.map(c => {
             return (
                 <div className="border">
