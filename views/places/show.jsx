@@ -2,6 +2,7 @@ const React = require('react')
 const Def = require('../default')
 
 function Show({ place, id }) {
+    console.log(id)
     let comments = (
         <h3 className="inactive">
             No comments yet!

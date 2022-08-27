@@ -41,7 +41,7 @@ router.get('/:id', (req, res) => {
         .populate('comments')
         .then(place => {
             console.log(place.comments)
-            res.render('places/show', { place })
+            res.render('places/show', { place, id: req.params.id })
         })
         .catch(err => {
             console.log('err', err)
@@ -62,9 +62,27 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.post('/:id/rant', (req, res) => {
-    req.body.rant = req.body.rant ? true : false
     console.log(req.body)
-    res.send('GET /places/:id/rant stub')
+    console.log(req.params.id)
+    db.Place.findById(req.params.id)
+        .then(place => {
+            db.Comment.create(req.body)
+                .then(comment => {
+                    place.comments.push(comment.id)
+                    place.save()
+                        .then(() => {
+                            res.redirect(`/places/${req.params.id}`)
+                        })
+                })
+                .catch(err => {
+                    console.log('error1')
+                    res.render('error404')
+                })
+        })
+        .catch(err => {
+            console.log('error2')
+            res.render('error404')
+        })
 })
 
 router.delete('/:id/rant/:rantId', (req, res) => {
