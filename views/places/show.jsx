@@ -45,6 +45,25 @@ function Show({ place, id }) {
                         Delete
                     </button>
                 </form>
+                <form method="POST" action={`/places/${id}/rant`}>
+                    <div>
+                        <label htmlFor="author">Author</label>
+                        <input type="text" name="author" id="author" />
+                    </div>
+                    <div>
+                        <label htmlFor="content">Content</label>
+                        <textarea name="content" id="content" />
+                    </div>
+                    <div>
+                        <label htmlFor="rating">Rating</label>
+                        <input type="range" name="rating" id="rating" min="0" step="1" max="5" />
+                    </div>
+                    <div>
+                        <label htmlFor="rant">Rant?</label>
+                        <input type="checkbox" name="rant" id="rant" />
+                    </div>
+                    <input className="btn btn-primary" type="submit" value="Submit" />
+                </form>
             </main>
         </Def>
     )

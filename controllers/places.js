@@ -62,6 +62,7 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.post('/:id/rant', (req, res) => {
+    console.log(req.body)
     res.send('GET /places/:id/rant stub')
 })
 
